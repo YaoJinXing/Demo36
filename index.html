@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+        	#p3{
+        		height: 100px;
+        		width:100px;
+        		background-color:skyblue;
+        	}
+        </style>
+    </head>
+    <body>
+    	<input type="text" id="inp1">
+    	<br>
+    	<input type="text" id="inp2">
+    	<button id="btn">计算</button>
+    	<p id="p3"></p>
+    	<script type="text/javascript" src="modules/sea.js/sea.js"></script>
+    	<script type="text/javascript">
+    		seajs.config({
+    			alias:{
+    				"calculator":"./modules/calculator.js"
+    			}
+    		});
+    		document.querySelector("#btn").onclick=function(){
+    			//入口模块,use中的参数就是calculator暴露出的内容
+    			seajs.use("calculator",function(cal){
+    				var val=cal.Cdelete();
+    				document.getElementById("p3").innerHTML=val;
+    			});
+    		}
+    	</script>
+    </body>
+</html>
